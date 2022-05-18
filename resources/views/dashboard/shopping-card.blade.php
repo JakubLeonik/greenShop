@@ -9,8 +9,8 @@
     </x-center-pane>
     {{ $orders->appends(request()->input())->links('paginators.b5') }}
     <div class="text-center w-100 pb-3">
-        <a href="{{ route('products.index') }}">
-            Back to all items
+        <a href="{{ route('dashboard.index') }}">
+            Back to dashboard
         </a>
     </div>
 </x-layout>

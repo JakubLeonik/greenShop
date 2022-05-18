@@ -18,10 +18,11 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
+        $possible_statuses = ['in_card', 'bought', 'in_delivery'];
         return [
-            'user_id' => 11,
+            'user_id' => User::all()->random()->id,
             'product_id' => Product::all()->random()->id,
-            'status' => array_rand(['in_card', 'bought', 'in_delivery'])
+            'status' => $possible_statuses[array_rand($possible_statuses)]
         ];
     }
 }
