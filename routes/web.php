@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ExternalLoginController;
@@ -35,6 +36,9 @@ Route::post('/products/{product}/edit', [ProductController::class, 'update'])->n
 
 //delete product
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware(['auth', 'verified']);
+
+//order index
+Route::get('/dashboard/orders', [OrderController::class, 'index'])->name('orders.index')->middleware(['auth', 'verified']);
 
 //dashboard
 Route::get('/dashboard', DashboardController::class)->name('dashboard.index')->middleware(['auth', 'verified']);
