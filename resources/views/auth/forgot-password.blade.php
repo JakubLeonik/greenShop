@@ -5,7 +5,9 @@
             <form method="POST" action="{{ route('password.email') }}">
             @csrf
                 <input class="form-control" type="email" name="email" id="email" placeholder="Email" required> <br>
-                <input class="form-control" type="submit" value="Email Password Reset Link">
+                <x-button type="submit">
+                    Email Password Reset Link
+                </x-button>
             </form>
             <x-auth-session-status class="mb-4" :status="session('status')" />
             <x-auth-validation-errors class="mb-4" :errors="$errors" />

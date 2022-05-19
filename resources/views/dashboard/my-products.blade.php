@@ -4,23 +4,19 @@
     </x-header>
     <x-center-pane>
         Your products:
-        <div class="w-50 mx-auto py-2">
-            <table class="table">
+            <table class="table w-75 mx-auto">
                 <thead>
-                <tr>
-                    <th scope="col">
-                        Title
-                    </th>
-                    <th scope="col">
-                        Created At
-                    </th>
-                    <th scope="col">
-                        Price
-                    </th>
-                    <th scope="col">
-                        Actions
-                    </th>
-                </tr>
+                    <tr>
+                        <th scope="col">
+                            Title
+                        </th>
+                        <th scope="col">
+                            Created At
+                        </th>
+                        <th scope="col">
+                            Price
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($products as $product)
@@ -34,21 +30,22 @@
                             <td>
                                 {{ $product->price }}
                             </td>
-                            <td>
-                                <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-link">
+                            <td class="d-flex gap-2">
+                                <x-link class="w-50" href="{{ route('products.edit', ['product' => $product]) }}">
                                     Edit
-                                </a>
-                                <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST">
+                                </x-link>
+                                <form class="w-50" action="{{ route('products.destroy', ['product' => $product]) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <input class="btn btn-link" type="submit" value="DELETE">
+                                    <x-button type="submit">
+                                        DELETE
+                                    </x-button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
         <a href="{{ route('dashboard.index') }}">
             Dashboard
         </a>

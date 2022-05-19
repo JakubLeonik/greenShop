@@ -20,7 +20,16 @@ class DashboardController extends Controller
         return view('dashboard.shopping-card', [
             'orders' => Order::orderBy('created_at', 'desc')
                 ->where('user_id', 'like', auth()->user()->id)
+                ->where('status', 'like', 'in_card')
                 ->paginate(10)
         ]);
+    }
+    public function submit_order(){
+        $orders = Order::where('user_id', 'like', auth()->user()->id);
+        foreach ($orders as $order){
+            $order->status = 'bought';
+            $order->save();
+        }
+        return redirect()->route('dashboard.shopping-card');
     }
 }

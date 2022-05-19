@@ -5,20 +5,17 @@
     <x-center-pane>
         <table class="table w-75 mx-auto">
             <thead>
-            <tr>
-                <th scope="col">
-                    Product title
-                </th>
-                <th scope="col">
-                    Created At
-                </th>
-                <th scope="col">
-                    Price
-                </th>
-                <th scope="col">
-                    Status
-                </th>
-            </tr>
+                <tr>
+                    <th scope="col">
+                        Product title
+                    </th>
+                    <th scope="col">
+                        Created At
+                    </th>
+                    <th scope="col">
+                        Price
+                    </th>
+                </tr>
             </thead>
             <tbody>
                 <?php $total_price = 0 ?>
@@ -37,7 +34,9 @@
                             <?php $total_price += $order->product->price ?>
                         </td>
                         <td>
-                            {{ $order->status }}
+                            <a href="{{ route('orders.delete', ['order' => $order->id]) }}">
+                                Delete
+                            </a>
                         </td>
                     </tr>
                 @endforeach

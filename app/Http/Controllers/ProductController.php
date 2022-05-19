@@ -75,7 +75,7 @@ class ProductController extends Controller
     {
         $this->authorize('delete', $product);
         $product->delete();
-        return redirect()->route('dashboard.index');
+        return redirect()->route('dashboard.my-products');
     }
     //search for product
     public function search($key, $category){

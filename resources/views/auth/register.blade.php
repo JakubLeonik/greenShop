@@ -14,7 +14,9 @@
             <a style="color: #132A13" href="{{ route('login') }}">
                 Already registered?
             </a> <br>
-            <input class="form-control w-25 rounded-pill" type="submit" value="Register"> <br>
+            <x-button type="submit">
+                Register
+            </x-button> <br>
             <a style="color: #132A13" href="{{ route('main.index') }}">Go back</a>
         </form>
     </x-center-pane>

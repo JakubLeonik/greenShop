@@ -15,13 +15,15 @@
             <a href="{{ route('password.request') }}">
                 Forgot your password?
             </a> <br>
-            <input class="form-control w-25 rounded-pill" type="submit" value="Log in"> <br>
-            <a class="text-decoration-none form-control w-25 rounded-pill" href="{{ route('login.external', ['provider' => 'google']) }}">
+            <x-button type="submit">
+                Log in
+            </x-button> <br>
+            <x-link href="{{ route('login.external', ['provider' => 'google']) }}">
                 Log in by Google
-            </a> <br>
-            <a class="text-decoration-none form-control w-25 rounded-pill" href="{{ route('login.external', ['provider' => 'github']) }}">
+            </x-link> <br>
+            <x-link href="{{ route('login.external', ['provider' => 'github']) }}">
                 Log in by GitHub
-            </a> <br>
+            </x-link> <br>
             <a href="{{ route('main.index') }}">Go back</a>
         </form>
     </x-center-pane>

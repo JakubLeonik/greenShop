@@ -4,11 +4,15 @@
             Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another. <br>
             <form method="POST" action="{{ route('verification.send') }}">
                 @csrf
-                <input class="form-control rounded-pill" type="submit" value="Send veryfication email">
+                <x-button type="submit">
+                    Send verification email
+                </x-button>
             </form>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <input class="form-control rounded-pill" type="submit" value="Log out">
+                <x-button type="submit">
+                    Log out
+                </x-button>
             </form>
             @if (session('status') == 'verification-link-sent')
                 <div class="p-3">

@@ -4,6 +4,8 @@
         <form method="POST" action="{{ route('password.confirm') }}">
             @csrf
             <input type="password" name="password" id="password" placeholder="Password" required />
-            <input type="submit" value="Confirm">
+            <x-button type="submit">
+                Confirm
+            </x-button>
         </form>
 </x-layout>

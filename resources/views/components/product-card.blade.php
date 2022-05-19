@@ -11,7 +11,9 @@
         <form class="w-100 d-flex justify-content-center" method="POST" action="{{ route('orders.store') }}">
             @csrf
             <input type="hidden" name="product_id" value="{{$product->id}}">
-            <button class="d-block w-50 btn btn-primary border-dark text-dark rounded-pill w-50" style="background-color: #efefef;" type="submit">Buy</button>
+            <x-button type="submit">
+                Buy
+            </x-button>
         </form>
     </div>
 </div>

@@ -34,6 +34,7 @@ Route::delete('/products/{product}', [ProductController::class, 'destroy'])->nam
 //orders
 Route::get('/dashboard/orders', [OrderController::class, 'index'])->name('orders.index')->middleware(['auth', 'verified']);
 Route::post('/dashboard/orders/store', [OrderController::class, 'store'])->name('orders.store')->middleware(['auth', 'verified']);
+Route::get('/dashboard/orders/{order}/delete', [OrderController::class, 'destroy'])->name('orders.delete')->middleware(['auth', 'verified']);
 
 //dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware(['auth', 'verified']);

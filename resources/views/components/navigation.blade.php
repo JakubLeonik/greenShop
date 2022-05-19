@@ -19,9 +19,9 @@
         </form>
         @auth
             <div class="nav-item dropdown col-3 d-flex flex-row justify-content-end">
-                <button class="btn btn-primary border-dark text-dark rounded-pill dropdown-toggle px-5" style="background-color: #efefef;" type="button" id="menu" data-bs-toggle="dropdown" aria-expanded="false">
+                <x-button class="w-50" type="button" id="menu" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ ucfirst(auth()->user()->name) }}
-                </button>
+                </x-button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menu">
                     <li>
                         <a href="{{ route('dashboard.index') }}" class="dropdown-item">
@@ -43,12 +43,12 @@
             </div>
         @else
             <div class="col-3 d-flex flex-row gap-3">
-                <a class="d-block btn btn-primary border-dark text-dark rounded-pill w-50" style="background-color: #efefef;" href="{{ route('login') }}">
+                <x-link class="w-50" href="{{ route('login') }}">
                     Log in
-                </a>
-                <a class="d-block w-50 btn btn-primary border-dark text-dark rounded-pill w-50" style="background-color: #efefef;" href="{{ route('register') }}">
+                </x-link>
+                <x-link class="w-50" href="{{ route('register') }}">
                     Register
-                </a>
+                </x-link>
             </div>
         @endauth
     </div>
