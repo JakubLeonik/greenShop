@@ -9,7 +9,7 @@
         <x-link href="{{ route('products.user-index') }}">
             My products
         </x-link>
-        <x-link href="{{ route('order.index') }}">
+        <x-link href="{{ route('orders.index') }}">
             My orders
         </x-link>
         <x-link href="{{ route('products.create') }}">

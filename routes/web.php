@@ -37,7 +37,8 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 
 //orders
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard/orders', [OrderItemController::class, 'index'])->name('order.index');
+    Route::get('/dashboard/orders', [OrderItemController::class, 'index'])->name('orders.index');
+    Route::post('/dashboard/orders/submit', [OrderItemController::class, 'submit'])->name('orders.submit');
 });
 
 //login providers

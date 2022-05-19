@@ -1,6 +1,6 @@
-@props(['fields'])
+@props(['fields' => []])
 
-<form class="w-50 gap-3 p-4 d-flex flex-column justify-content-center align-items-center">
+<form {{ $attributes->except(['submit-text']) }} class="w-50 gap-3 p-4 d-flex flex-column justify-content-center align-items-center">
     @csrf
     @foreach($fields as $field)
         <input

@@ -19,7 +19,7 @@ class OrderFactory extends Factory
     {
         return [
             'user_id' => User::all()->random()->id,
-            'status' => 'status'
+            'status' => 'in_card'
         ];
     }
 }

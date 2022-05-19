@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
@@ -21,14 +22,12 @@ class OrderItemController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function submit()
     {
-        //
+        $order = Order::findOrFail(request('order'));
+        $order->status = "waiting_for_payment";
+        $order->save();
+        return redirect()->route('orders.index');
     }
 
     /**
