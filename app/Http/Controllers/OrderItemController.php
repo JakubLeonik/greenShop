@@ -14,7 +14,11 @@ class OrderItemController extends Controller
      */
     public function index()
     {
-        //
+        return view('orders.index', [
+            'orders' => OrderItem::whereHas('order', function ($query){
+                $query->where('user_id', 'like', auth()->user()->id);
+            })->get()
+        ]);
     }
 
     /**

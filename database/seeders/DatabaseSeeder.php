@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -26,5 +27,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Category::factory(5)->create();
         Product::factory(50)->create();
+        Order::factory(10)->create();
+        OrderItem::factory(50)->create();
     }
 }

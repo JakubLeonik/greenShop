@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +34,11 @@ Route::middleware(['auth', 'verified'])->group(function (){
 //products (for guest)
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
+//orders
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard/orders', [OrderItemController::class, 'index'])->name('order.index');
+});
 
 //login providers
 Route::get('/login/{provider}', [ExternalLoginController::class, 'redirect'])->name('login.external');
