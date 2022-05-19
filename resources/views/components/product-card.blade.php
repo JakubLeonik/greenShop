@@ -8,12 +8,6 @@
         </span> <br>
         <span class="fw-bold">Price: {{ $product->price }}$</span> <br>
         {{ substr($product->description, 0, 100) }}... <br> <br>
-        <form class="w-100 d-flex justify-content-center" method="POST" action="{{ route('orders.store') }}">
-            @csrf
-            <input type="hidden" name="product_id" value="{{$product->id}}">
-            <x-button type="submit">
-                Buy
-            </x-button>
-        </form>
+        <x-buy-button :product="$product" />
     </div>
 </div>

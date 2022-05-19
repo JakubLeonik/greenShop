@@ -24,7 +24,7 @@
                 </x-button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menu">
                     <li>
-                        <a href="{{ route('dashboard.index') }}" class="dropdown-item">
+                        <a href="{{ route('shop.dashboard') }}" class="dropdown-item">
                             Dashboard
                         </a>
                     </li>

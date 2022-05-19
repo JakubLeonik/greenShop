@@ -21,9 +21,23 @@
                 Created at {{ date_format($product->created_at, 'j F Y') }}
             </span>
             <hr>
-            <a href="{{ url()->previous() }}">
-                Go back
-            </a>
+                <x-buy-button :product="$product" />
+                @can('delete', $product)
+                    <form class="w-100" action="{{ route('products.destroy', ['product' => $product]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <x-button class="mx-auto my-3" type="submit">
+                            Delete
+                        </x-button>
+                    </form>
+                @endcan
+                @can('update', $product)
+                    <x-link class="mx-auto" href="{{ route('products.edit', ['product' => $product]) }}">
+                        Edit
+                    </x-link>
+                @endcan
+            <hr>
+            <x-back-link/>
         </div>
     </x-center-pane>
 </x-layout>

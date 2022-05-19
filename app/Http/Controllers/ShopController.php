@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 
-class MainController extends Controller
+class ShopController extends Controller
 {
-    public function __invoke(){
-        return view('main.index', [
+    public function index(){
+        return view('shop.index', [
             'products' => Product::latest()->take(6)->get(),
             'categories' => Category::all()
         ]);
+    }
+    public function dashboard(){
+        return view('shop.dashboard');
     }
 }

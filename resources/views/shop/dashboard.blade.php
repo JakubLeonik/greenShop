@@ -6,16 +6,13 @@
         <span class="fw-bold">
             Hello, {{ auth()->user()->name }}! <br>
         </span>
-        <x-link href="{{ route('dashboard.my-products') }}">
-            Your products
-        </x-link>
-        <x-link href="{{ route('dashboard.shopping-card') }}">
-            Shopping card
+        <x-link href="{{ route('products.user-index') }}">
+            My products
         </x-link>
         <x-link href="{{ route('products.create') }}">
             Add new product
         </x-link>
-        <a href="{{ route('main.index') }}">
+        <a href="{{ route('shop.index') }}">
             Main page
         </a>
     </x-center-pane>

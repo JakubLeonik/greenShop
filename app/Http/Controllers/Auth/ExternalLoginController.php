@@ -23,6 +23,6 @@ class ExternalLoginController extends Controller
         }
         request()->session()->regenerate();
         auth()->login($user, true);
-        return redirect()->route('dashboard.index');
+        return redirect()->route('shop.dashboard');
     }
 }

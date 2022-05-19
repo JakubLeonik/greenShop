@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
-use App\Http\Services\SearchService;
 use Illuminate\Validation\Rule;
 
 
@@ -20,6 +18,13 @@ class ProductController extends Controller
             'categories' => Category::all()
         ]);
     }
+    public function user_index()
+    {
+        return view('products.user-index', [
+            'products' => Product::where('user_id', 'like', auth()->user()->id)->paginate(10),
+            'categories' => Category::all()
+        ]);
+    }
     public function create()
     {
         $this->authorize('create', Product::class);
@@ -30,15 +35,15 @@ class ProductController extends Controller
     public function store()
     {
         $this->authorize('create', Product::class);
-        $atributes  = request()->validate([
+        $attributes  = request()->validate([
             'title' => ['required', Rule::unique('products', 'title')],
             'description' => 'required',
             'price' => ['numeric', 'required'],
             'category_id' => ['numeric', 'required']
         ]);
-        $atributes['user_id'] = auth()->user()->id;
+        $attributes['user_id'] = auth()->user()->id;
 
-        $product = Product::create($atributes);
+        $product = Product::create($attributes);
         return redirect()->route('products.show', [
             'product' => $product,
             'categories' => Category::all()
@@ -62,20 +67,20 @@ class ProductController extends Controller
     public function update(Product $product)
     {
         $this->authorize('update', $product);
-        $atributes  = request()->validate([
+        $attributes  = request()->validate([
             'title' => ['required', Rule::unique('products', 'title')->ignore($product->id)],
             'description' => 'required',
             'price' => ['numeric', 'required'],
             'category_id' => ['numeric', 'required']
         ]);
-        Product::find($product->id)->update($atributes);
+        Product::find($product->id)->update($attributes);
         return redirect()->route('products.show', ['product' => $product->id]);
     }
     public function destroy(Product $product)
     {
         $this->authorize('delete', $product);
         $product->delete();
-        return redirect()->route('dashboard.my-products');
+        return redirect()->route('products.user-index');
     }
     //search for product
     public function search($key, $category){

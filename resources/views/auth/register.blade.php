@@ -17,7 +17,7 @@
             <x-button type="submit">
                 Register
             </x-button> <br>
-            <a style="color: #132A13" href="{{ route('main.index') }}">Go back</a>
+            <a style="color: #132A13" href="{{ route('shop.index') }}">Go back</a>
         </form>
     </x-center-pane>
 </x-layout>
